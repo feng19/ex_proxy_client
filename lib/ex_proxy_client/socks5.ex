@@ -130,7 +130,7 @@ defmodule ExProxyClient.Socks5 do
 
     :gun.ws_send(conn_pid, stream_ref, {:binary, request})
     :keep_state_and_data
-    #{:keep_state_and_data, @timeout}
+    # {:keep_state_and_data, @timeout}
   end
 
   def connected(
@@ -147,7 +147,7 @@ defmodule ExProxyClient.Socks5 do
 
     transport.send(socket, response)
     :keep_state_and_data
-    #{:keep_state_and_data, @timeout}
+    # {:keep_state_and_data, @timeout}
   end
 
   def connected(:info, {:tcp_closed, _socket}, _state_data), do: {:stop, :normal}
@@ -207,18 +207,17 @@ defmodule ExProxyClient.Socks5 do
         "wss" -> uri.port || 443
       end
 
-    uri.host
-    |> String.to_charlist()
-    |> :gun.open(port, %{retry_timeout: 2, supervise: false})
-    |> case do
-      {:ok, conn_pid} ->
-        {:ok, _} = :gun.await_up(conn_pid)
-        stream_ref = :gun.ws_upgrade(conn_pid, uri.path)
+    url = String.to_charlist(uri.host)
 
-        {:next_state, :wait_upgrade,
-         Map.merge(state_data, %{target: target, conn_pid: conn_pid, stream_ref: stream_ref}),
-         @timeout}
+    with {:ok, conn_pid} <- :gun.open(url, port, %{retry_timeout: 2, supervise: false}),
+         {:ok, _} <- :gun.await_up(conn_pid, 10_000) do
+      stream_ref = :gun.ws_upgrade(conn_pid, uri.path)
 
+      state_data =
+        Map.merge(state_data, %{target: target, conn_pid: conn_pid, stream_ref: stream_ref})
+
+      {:next_state, :wait_upgrade, state_data, @timeout}
+    else
       error ->
         Logger.error("connect_remote error: #{inspect(error)}")
         {:stop, :normal}
