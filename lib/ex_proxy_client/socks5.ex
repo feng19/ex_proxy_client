@@ -157,6 +157,9 @@ defmodule ExProxyClient.Socks5 do
   def connected(:info, {:gun_ws, _conn_pid, _stream_ref, _frame}, _state_data),
     do: {:stop, :normal}
 
+  def connected(:info, {:gun_down, _conn_pid, _stream_ref, :closed, _}, _state_data),
+    do: {:stop, :normal}
+
   def connected(:info, {:EXIT, _, _}, _state_data), do: {:stop, :normal}
 
   def connected({:call, from}, _request, _state_data) do
@@ -169,8 +172,8 @@ defmodule ExProxyClient.Socks5 do
   def connected(:timeout, _msg, _state_data), do: {:stop, :timeout}
 
   def connected(event_type, msg, _state_data) do
-    Logger.debug("unknow_event: #{inspect(event_type)}, msg: #{inspect(msg)}")
-    {:stop, :unknow_event}
+    Logger.debug("unknown_event: #{inspect(event_type)}, msg: #{inspect(msg)}")
+    {:stop, :normal}
   end
 
   @impl GenStateMachine

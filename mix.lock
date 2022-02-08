@@ -1,7 +1,7 @@
 %{
-  "cowlib": {:hex, :cowlib, "2.10.1", "5442eb6b4eb1eb7f34df38145ecb59ba15932fa6465c1c10dc47c7eb91dea8cd", [:make, :rebar3], [], "hexpm", "9b4271e10228e6877199f1d698eaa3b32e69ae82cc68e1443c5ca8e774089a44"},
+  "cowlib": {:hex, :cowlib, "2.11.0", "0b9ff9c346629256c42ebe1eeb769a83c6cb771a6ee5960bd110ab0b9b872063", [:make, :rebar3], [], "hexpm", "2b3e9da0b21c4565751a6d4901c20d1b4cc25cbb7fd50d91d2ab6dd287bc86a9"},
   "gen_state_machine": {:hex, :gen_state_machine, "3.0.0", "1e57f86a494e5c6b14137ebef26a7eb342b3b0070c7135f2d6768ed3f6b6cdff", [:mix], [], "hexpm", "0a59652574bebceb7309f6b749d2a41b45fdeda8dbb4da0791e355dd19f0ed15"},
-  "gun": {:hex, :gun, "2.0.0-rc.1", "b87d81dad83f41fa3f2cbf1a923eae44c5ce559a7006728d47888c3e7eb7a6ce", [:make, :rebar3], [{:cowlib, "2.10.1", [hex: :cowlib, repo: "hexpm", optional: false]}], "hexpm", "459e7c843c894f69878df60378e7fa4a4b5504a00066c02138d084435c2c7968"},
-  "plug_crypto": {:hex, :plug_crypto, "1.2.1", "5c854427528bf61d159855cedddffc0625e2228b5f30eff76d5a4de42d896ef4", [:mix], [], "hexpm", "6961c0e17febd9d0bfa89632d391d2545d2e0eb73768f5f50305a23961d8782c"},
-  "ranch": {:hex, :ranch, "2.0.0", "fbf3d79661c071543256f9051caf19d65daa6df1cf6824d8f37a49b19a66f703", [:rebar3], [], "hexpm", "c20a4840c7d6623c19812d3a7c828b2f1bd153ef0f124cb69c54fe51d8a42ae0"},
+  "gun": {:hex, :gun, "2.0.0-rc.2", "7c489a32dedccb77b6e82d1f3c5a7dadfbfa004ec14e322cdb5e579c438632d2", [:make, :rebar3], [{:cowlib, "2.11.0", [hex: :cowlib, repo: "hexpm", optional: false]}], "hexpm", "6b9d1eae146410d727140dbf8b404b9631302ecc2066d1d12f22097ad7d254fc"},
+  "plug_crypto": {:hex, :plug_crypto, "1.2.2", "05654514ac717ff3a1843204b424477d9e60c143406aa94daf2274fdd280794d", [:mix], [], "hexpm", "87631c7ad914a5a445f0a3809f99b079113ae4ed4b867348dd9eec288cecb6db"},
+  "ranch": {:hex, :ranch, "2.1.0", "2261f9ed9574dcfcc444106b9f6da155e6e540b2f82ba3d42b339b93673b72a3", [:make, :rebar3], [], "hexpm", "244ee3fa2a6175270d8e1fc59024fd9dbc76294a321057de8f803b1479e76916"},
 }
