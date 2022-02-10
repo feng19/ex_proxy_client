@@ -21,7 +21,10 @@ defmodule ExProxyClient.MixProject do
   end
 
   def escript do
-    [main_module: ExProxyClient]
+    [
+      main_module: ExProxyClient,
+      emu_args: "+K true -detached"
+    ]
   end
 
   # Run "mix help deps" to learn about dependencies.
