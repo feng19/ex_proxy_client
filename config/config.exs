@@ -10,3 +10,8 @@ config :ex_proxy_client, ExProxyClient.Socks5,
   port: 9050,
   url: "ws://127.0.0.1:4000/ws",
   encrypt: {:once, encrypt_key}
+
+config :ex_proxy_client, ExProxyClient.Http,
+  port: 9060,
+  url: "ws://127.0.0.1:4000/ws",
+  encrypt: {:once, encrypt_key}

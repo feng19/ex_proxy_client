@@ -1,6 +1,7 @@
 defmodule ExProxyClient do
   def main(_) do
     start()
+    IO.puts("Client started.")
 
     receive do
       :stop -> :stop

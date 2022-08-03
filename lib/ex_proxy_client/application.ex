@@ -10,8 +10,7 @@ defmodule ExProxyClient.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # child_spec(ExProxyClient.Http),
-      # child_spec(ExProxyClient.Socks4),
+      child_spec(ExProxyClient.Http),
       child_spec(ExProxyClient.Socks5)
     ]
 
