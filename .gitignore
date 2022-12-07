@@ -28,3 +28,4 @@ ex_proxy_client-*.tar
 .idea
 *.iml
 /ex_proxy_client
+config/runtime.exs
