@@ -22,14 +22,17 @@ defmodule ExProxyClient.Application do
     config = Application.fetch_env!(@app, module) |> Map.new()
     Logger.info("start #{inspect(module)}, config: #{inspect(config)}")
 
+    {ip, config} = Map.pop(config, :ip, {127, 0, 0, 1})
+    {port, config} = Map.pop!(config, :port)
+
     port =
-      case config.port do
+      case port do
         port when is_binary(port) -> String.to_integer(port)
         port when is_integer(port) -> port
       end
 
-    trans_opts = %{socket_opts: [port: port]}
-    ref = module |> Module.split() |> List.last() |> String.downcase()
+    trans_opts = %{socket_opts: [ip: ip, port: port]}
+    ref = module |> Module.split() |> List.last() |> String.downcase() |> Kernel.<>("-#{port}")
     :ranch.child_spec(ref, :ranch_tcp, trans_opts, module, config)
   end
 end
