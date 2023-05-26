@@ -33,7 +33,7 @@ defmodule ExProxyClient.MixProject do
       {:plug_crypto, "~> 1.2"},
       {:ranch, "~> 2.0"},
       {:gen_state_machine, "~> 3.0"},
-      {:gun, "~> 2.0.0-rc.1"}
+      {:gun, "~> 2.0.0"}
     ]
   end
 end
