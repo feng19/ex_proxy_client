@@ -150,7 +150,7 @@ defmodule ExProxyClient.Http do
             {:ok, <<@domain, port::16, byte_size(domain), domain::binary>>, nil}
 
           bad_uri ->
-            Logger.warn("parse uri: #{inspect(uri)} got bad uri: #{inspect(bad_uri)}")
+            Logger.warning("parse uri: #{inspect(uri)} got bad uri: #{inspect(bad_uri)}")
             {:error, :error_uri}
         end
 
@@ -179,7 +179,7 @@ defmodule ExProxyClient.Http do
             {:ok, <<@domain, port::16, byte_size(domain), domain::binary>>, next_request}
 
           bad_uri ->
-            Logger.warn("parse uri: #{inspect(uri)} got bad uri: #{inspect(bad_uri)}")
+            Logger.warning("parse uri: #{inspect(uri)} got bad uri: #{inspect(bad_uri)}")
             {:error, :error_uri}
         end
 

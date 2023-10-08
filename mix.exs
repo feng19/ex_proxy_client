@@ -30,10 +30,10 @@ defmodule ExProxyClient.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:plug_crypto, "~> 1.2"},
+      {:plug_crypto, "~> 2.0"},
       {:ranch, "~> 2.0"},
       {:gen_state_machine, "~> 3.0"},
-      {:gun, "~> 2.0.0"}
+      {:gun, "~> 2.0"}
     ]
   end
 end
