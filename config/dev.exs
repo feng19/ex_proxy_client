@@ -1,10 +1,6 @@
 import Config
 
-encrypt_key =
-  System.get_env(
-    "EXPS_ENCRYPT_KEY",
-    "90yT56qlvXmCdrrAnQsdb16HNm7lP6yS"
-  )
+encrypt_key = System.get_env("EXPS_ENCRYPT_KEY", "90yT56qlvXmCdrrAnQsdb16HNm7lP6yS")
 
 config :ex_proxy_client, ExProxyClient.Socks5,
   port: 9050,

@@ -162,7 +162,7 @@ defmodule ExProxyClient.Http do
   defp parse_request(request) do
     case String.split(request, "\r\n", parts: 2) do
       [first_line, rest_lines] ->
-        [method, uri, version] = String.split(first_line, " ", parts: 2)
+        [method, uri, version] = String.split(first_line, " ", parts: 3)
 
         case parse_uri(uri) do
           %URI{host: domain, port: nil, path: path} when is_binary(domain) ->
