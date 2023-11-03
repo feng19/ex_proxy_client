@@ -14,7 +14,7 @@ defmodule ExProxyClient.WsClient do
   @sign_secret "90de3456asxdfrtg"
 
   def init(opts) do
-    {urls, opts} = Map.pop(opts, :urls)
+    {urls, opts} = Map.pop(opts, :servers)
     uri = urls |> Enum.random() |> URI.parse()
 
     {encrypt_type, key} =

@@ -9,17 +9,17 @@ defmodule ExProxyClient.Application do
 
   @impl true
   def start(_type, _args) do
-    children = [
-      child_spec(ExProxyClient.Http),
-      child_spec(ExProxyClient.Socks5)
-    ]
-
+    children = Application.get_env(@app, :endpoints, []) |> Enum.map(&child_spec/1)
     opts = [strategy: :one_for_one, name: ExProxyClient.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
-  defp child_spec(module) do
-    config = Application.fetch_env!(@app, module) |> Map.new()
+  defp type2module(:socks5), do: ExProxyClient.Socks5
+  defp type2module(:http), do: ExProxyClient.Http
+
+  defp child_spec(endpoint_config) do
+    {type, config} = endpoint_config |> Map.new() |> Map.pop!(:type)
+    module = type2module(type)
     Logger.info("start #{inspect(module)}, config: #{inspect(config)}")
 
     {ip, config} = Map.pop(config, :ip, {127, 0, 0, 1})

@@ -9,4 +9,5 @@ defmodule ExProxyClient do
   end
 
   def start, do: Application.ensure_started(:ex_proxy_client)
+  def stop, do: System.halt(0)
 end

@@ -23,7 +23,7 @@ defmodule ExProxyClient.MixProject do
   def escript do
     [
       main_module: ExProxyClient,
-      emu_args: "+K true -detached"
+      emu_args: "+K true -detached -name ex_proxy_client@127.0.0.1"
     ]
   end
 
